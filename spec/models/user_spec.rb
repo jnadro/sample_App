@@ -30,4 +30,10 @@ describe User do
     no_email_user = User.new(@attr.merge(:email => ""))
     no_email_user.should_not be_valid
   end
+  
+  it "should have name 50 characters or less" do
+    long_name = "a" * 51
+    long_name_user = User.new(@attr.merge(:name => long_name))
+    long_name_user.should_not be_valid
+  end
 end
